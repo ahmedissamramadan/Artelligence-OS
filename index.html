@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page-title">Artelligence OS – لوحة التحكم</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand-logo">
+                <svg class="logo-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"
+                     style="width: 36px; height: 36px; fill: var(--accent-purple); filter: drop-shadow(0 0 6px var(--accent-purple));">
+                    <path fill="currentColor" d="M520.720947,355.325134 C539.249207,389.463806 557.804871,423.167999 575.905151,457.115021 C607.091003,515.604065 639.317444,573.533569 669.969177,632.309692 C677.438354,646.632263 684.934082,660.958618 692.991821,674.952576 C705.913391,697.393494 724.838562,711.707275 750.850952,715.813293 C752.576172,716.085571 755.079773,716.019592 754.859619,718.526489 C754.627991,721.163208 752.052185,720.352234 750.409607,720.357239 C727.084229,720.428589 703.758545,720.469177 680.433167,720.411621 C666.781311,720.377991 653.138306,720.738464 639.476013,720.491516 C603.579651,719.842468 577.715149,703.257690 560.842163,672.057739 C540.244385,633.970093 519.964600,595.710083 499.274139,557.673218 C475.320709,513.637634 451.117584,469.737549 426.912903,425.839264 C421.355255,415.759796 421.220795,406.186493 427.140747,396.096619 C443.995636,367.369446 460.529053,338.453674 477.196777,309.616608 C477.779785,308.607941 478.410370,307.622589 479.077454,306.667297 C484.490143,298.916046 489.984894,298.934265 494.552704,307.143433 C503.378662,323.005249 511.897430,339.037994 520.720947,355.325134 Z" />
+                    <path fill="currentColor" d="M329.131958,594.107788 C351.697571,574.475952 384.033905,576.237671 403.406799,597.897278 C422.106720,618.804443 420.518250,651.789124 399.889343,670.937988 C379.275238,690.073120 346.479889,689.201843 327.319305,669.009949 C306.464844,647.033020 307.115692,615.752625 329.131958,594.107788 Z" />
+                </svg>
+                <h2>Artelligence OS</h2>
+                <span class="badge" data-i18n="badge-mvp">SaaS MVP</span>
+            </div>
+            <nav class="menu">
+                <a href="#" class="menu-item active" data-tab="command-center" id="menu-command-center-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                    <span data-i18n="menu-command-center">مركز القيادة</span>
+                </a>
+                <a href="#" class="menu-item" data-tab="business-hub" id="menu-business-hub-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+                    <span data-i18n="menu-business-hub">مركز الأعمال</span>
+                </a>
+                <a href="#" class="menu-item" data-tab="content-studio" id="menu-content-studio-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+                    <span data-i18n="menu-content-studio">استوديو المحتوى</span>
+                </a>
+                <a href="#" class="menu-item" data-tab="agent-console" id="menu-agent-console-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path><line x1="8" y1="16" x2="8" y2="16"></line><line x1="16" y1="16" x2="16" y2="16"></line></svg>
+                    <span data-i18n="menu-agent-console">وحدة الوكلاء</span>
+                </a>
+                <a href="#" class="menu-item" data-tab="project-ops" id="menu-project-ops-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span data-i18n="menu-project-ops">إدارة المشاريع</span>
+                </a>
+                <a href="#" class="menu-item" data-tab="finance" id="menu-finance-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                    <span data-i18n="menu-finance">المتابعة المالية</span>
+                </a>
+                <a href="#" class="menu-item" data-tab="knowledge-vault" id="menu-knowledge-vault-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span data-i18n="menu-knowledge-vault">خزنة المعرفة</span>
+                </a>
+                <div class="menu-divider"></div>
+                
+                <a href="#" class="menu-item" data-tab="settings" id="menu-settings-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <span data-i18n="menu-settings">الإعدادات والأدوات</span>
+                </a>
+            </nav>
+            <div class="system-status" style="flex-direction: column; gap: 0.5rem; align-items: stretch;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <div class="status-indicator online" id="status-dot"></div>
+                    <span id="status-text" data-i18n="status-online">النظام متصل بالـ Telemetry</span>
+                </div>
+                <button class="btn btn-sm btn-outline" id="btn-check-updates" data-i18n="btn-update">التحقق من التحديثات</button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header with Breadcrumbs -->
+            <header class="top-header">
+                <div class="breadcrumbs">
+                    <span class="breadcrumb-item" id="breadcrumb-root">Artelligence OS</span>
+                    <span class="breadcrumb-separator">›</span>
+                    <span class="breadcrumb-item active" id="breadcrumb-current" data-i18n="menu-command-center">مركز القيادة</span>
+                </div>
+                <div class="user-profile">
+                    <button class="btn btn-sm btn-outline" id="btn-refresh" data-i18n="btn-refresh">تحديث</button>
+                    <span class="api-status" id="backend-status-badge" data-i18n="status-badge-online">البث: متصل</span>
+                    <div class="avatar" id="header-avatar-container" style="overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <img id="header-avatar-img" src="" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                        <span id="header-avatar-placeholder">A</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MODULE: Command Center -->
+            <section id="tab-command-center" class="tab-content active">
+                <!-- Welcome Banner -->
+                <div class="welcome-banner">
+                    <div class="welcome-text">
+                        <h2 data-i18n="cc-welcome">مرحباً أحمد، هذا ملخص يومك</h2>
+                        <p class="desc-text" data-i18n="db-welcome-desc">Artelligence OS يعمل بأقصى طاقة لتحسين عملياتك اليومية.</p>
+                    </div>
+                    <div class="date-display" id="current-date"></div>
+                </div>
+
+                <!-- Business Cards Row -->
+                <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+                    <!-- Tohamy Card -->
+                    <div class="stat-card business-card" data-business="tohamy" style="cursor: pointer;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-size: 1.5rem; display: flex;"><svg class="business-svg-icon" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+                            <span class="tag" id="tohamy-tag-status" style="background: var(--text-muted); color: var(--text-muted); opacity: 0.5;">0 Active</span>
+                        </div>
+                        <h3 data-i18n="cc-business-tohamy">Tohamy House</h3>
+                        <p class="stat-value" id="tohamy-tasks-count" style="font-size: 1.2rem;">0 Tasks</p>
+                        <span class="stat-desc" data-i18n="cc-active-tasks">Active Tasks</span>
+                    </div>
+                    <!-- SOLARA Card -->
+                    <div class="stat-card business-card" data-business="solara" style="cursor: pointer;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-size: 1.5rem; display: flex;"><svg class="business-svg-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><path d="M12 2a3 3 0 0 0-3 3h6a3 3 0 0 0-3-3zm0 3v15M5 8h14l-2 12H7L5 8z"/></svg></span>
+                            <span class="tag" id="solara-tag-status" style="background: var(--text-muted); color: var(--text-muted); opacity: 0.5;">0 Reels</span>
+                        </div>
+                        <h3 data-i18n="cc-business-solara">SOLARA Modest Fashion</h3>
+                        <p class="stat-value" id="solara-content-count" style="font-size: 1.2rem;">0 Reels Ready</p>
+                        <span class="stat-desc" data-i18n="cc-content-ready">Content Ready</span>
+                    </div>
+                    <!-- Freelance Card -->
+                    <div class="stat-card business-card" data-business="freelance" style="cursor: pointer;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-size: 1.5rem; display: flex;"><svg class="business-svg-icon" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+                            <span class="tag" id="freelance-tag-status" style="background: var(--text-muted); color: var(--text-muted); opacity: 0.5;">$0</span>
+                        </div>
+                        <h3 data-i18n="cc-business-freelance">Digital Services</h3>
+                        <p class="stat-value" id="freelance-revenue" style="font-size: 1.2rem;">$0</p>
+                        <span class="stat-desc" data-i18n="cc-revenue-today">Today's Revenue</span>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="section-header" style="margin-bottom: 12px;">
+                        <h2 data-i18n="cc-quick-actions">إجراءات سريعة</h2>
+                    </div>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action-btn" id="qa-new-campaign">
+                            <span class="qa-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></span>
+                            <span class="qa-text" data-i18n="cc-create-campaign">إنشاء حملة SOLARA</span>
+                        </button>
+                        <button class="quick-action-btn" id="qa-add-client">
+                            <span class="qa-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span>
+                            <span class="qa-text" data-i18n="cc-add-client">إضافة عميل جديد</span>
+                        </button>
+                        <button class="quick-action-btn" id="qa-open-project">
+                            <span class="qa-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+                            <span class="qa-text" data-i18n="cc-open-project">عرض لوحة المهام</span>
+                        </button>
+                        <button class="quick-action-btn" id="qa-search-knowledge">
+                            <span class="qa-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+                            <span class="qa-text" data-i18n="kv-search-placeholder">بحث في المعرفة</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Telemetry & Focus Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 data-i18n="stat-total-title">ساعات التتبع الإجمالية</h3>
+                        <p class="stat-value" id="total-hours-value">0.0</p>
+                        <span class="stat-desc" data-i18n="stat-total-desc">تم رصدها عبر نشاط النوافذ اليوم</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="stat-active-title">ساعات التركيز الفعلية</h3>
+                        <p class="stat-value" id="active-hours-value" style="color: var(--accent-cyan);">0.0</p>
+                        <span class="stat-desc" data-i18n="stat-active-desc">التطبيقات الإنتاجية النشطة</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="stat-prod-title">مؤشر الإنتاجية الحقيقي</h3>
+                        <p class="stat-value" id="productivity-score-value" style="color: var(--success);">0%</p>
+                        <span class="stat-desc" data-i18n="stat-prod-desc">وفقاً لتصنيفات الذكاء الاصطناعي</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="stat-agents-title">الوكلاء النشطون</h3>
+                        <p class="stat-value" id="active-agents-count">4</p>
+                        <span class="stat-desc" data-i18n="stat-agents-desc">تعمل بالتوازي بشكل مستقل</span>
+                    </div>
+                </div>
+
+                <div class="dashboard-two-col">
+                    <!-- Live Self-Healing Console -->
+                    <div class="card console-card" style="margin-bottom: 0;">
+                        <div class="section-header">
+                            <h2 data-i18n="console-title">سجل المعالجة والشفاء الذاتي (Self-Healing Log)</h2>
+                            <div class="dot-live"></div>
+                        </div>
+                        <div class="console-output" id="live-console">
+                            <!-- Live updates simulator -->
+                        </div>
+                    </div>
+
+                    <!-- Live Local Telemetry Apps -->
+                    <div class="card" style="margin-bottom: 0;">
+                        <div class="section-header">
+                            <h2 data-i18n="tracking-title">البرامج الأكثر استخداماً حالياً (Local Telemetry)</h2>
+                            <span class="tag" id="last-update-tag" data-i18n="tag-live">مباشر</span>
+                        </div>
+                        <div class="insight-list" id="telemetry-apps-container">
+                            <div class="insight-item">
+                                <div data-i18n="loading-text">جاري تحميل بيانات جهازك الفعلية من المستشعر المحلي...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Windows Logs -->
+                <div class="card" style="margin-top: 20px; margin-bottom: 0;">
+                    <div class="section-header">
+                        <h2 data-i18n="logs-title">سجل الأنشطة والنوافذ النشطة مؤخراً (Telemetry Logs)</h2>
+                    </div>
+                    <div class="insight-list" id="telemetry-activities-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE: Business Hub -->
+            <section id="tab-business-hub" class="tab-content">
+                <!-- Sub-navigation for 3 businesses -->
+                <div class="sub-nav">
+                    <button class="sub-nav-btn active" data-subtab="tohamy" data-i18n="cc-business-tohamy">التهامي للتشطيبات</button>
+                    <button class="sub-nav-btn" data-subtab="solara" data-i18n="cc-business-solara">SOLARA</button>
+                    <button class="sub-nav-btn" data-subtab="freelance" data-i18n="cc-business-freelance">خدمات رقمية</button>
+                </div>
+                
+                <!-- Tohamy Sub-panel -->
+                <div id="subtab-tohamy" class="subtab-content active">
+                    <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+                        <div class="stat-card">
+                            <h3 data-i18n="bh-tohamy-active-title">المشاريع القائمة</h3>
+                            <p class="stat-value">3</p>
+                            <span class="stat-desc" data-i18n="bh-tohamy-active-desc">مشاريع تشطيب نشطة</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 data-i18n="bh-tohamy-ready-title">المقاطع الجاهزة</h3>
+                            <p class="stat-value" style="color: var(--accent-cyan);">1</p>
+                            <span class="stat-desc" data-i18n="bh-tohamy-ready-desc">فيديوهات Reels بانتظار الرفع</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 data-i18n="bh-tohamy-last-title">آخر نشاط</h3>
+                            <p class="stat-value" id="tohamy-last-activity-val" data-i18n="bh-tohamy-last-val" style="color: var(--success); font-size: 0.95rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">فيلا التجمع الخامس</p>
+                            <span class="stat-desc" data-i18n="bh-tohamy-last-desc">تم تحديث مهام التشطيب اليوم</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="section-header">
+                            <h2 data-i18n="bh-tohamy-projects">مشاريع التشطيب</h2>
+                        </div>
+                        <div id="tohamy-projects-list" class="insight-list">
+                            <!-- Populated by JS -->
+                            <div class="insight-item">
+                                <span class="insight-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+                                <div style="text-align: start;">
+                                    <h4 data-i18n="bh-tohamy-proj1-title">فيلا التجمع الخامس - تشطيب كامل</h4>
+                                    <p data-i18n="bh-tohamy-proj1-desc">مرحلة الدهانات والكهرباء. المهام النشطة: 3 مهام قيد المتابعة.</p>
+                                </div>
+                            </div>
+                            <div class="insight-item">
+                                <span class="insight-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M9 12h6M9 8h6M9 4h6"/></svg></span>
+                                <div style="text-align: start;">
+                                    <h4 data-i18n="bh-tohamy-proj2-title">شقة الشيخ زايد - ديكور داخلي</h4>
+                                    <p data-i18n="bh-tohamy-proj2-desc">مرحلة تركيب الأرضيات وأعمال الجبس بورد.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SOLARA Sub-panel -->
+                <div id="subtab-solara" class="subtab-content">
+                    <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+                        <div class="stat-card">
+                            <h3 data-i18n="bh-solara-total-title">المنتجات الإجمالية</h3>
+                            <p class="stat-value">24</p>
+                            <span class="stat-desc" data-i18n="bh-solara-total-desc">في كتالوج العرض</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 data-i18n="bh-solara-active-title">الحملات الجارية</h3>
+                            <p class="stat-value" style="color: var(--accent-purple);">1</p>
+                            <span class="stat-desc" data-i18n="bh-solara-active-desc">حملة SOLARA الصيفية</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 data-i18n="bh-solara-status-title">حالة النشر</h3>
+                            <p class="stat-value" data-i18n="bh-solara-status-val" style="color: var(--accent-cyan);">منشور مجدول</p>
+                            <span class="stat-desc" data-i18n="bh-solara-status-desc">تنزيل اليوم جاهز</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="section-header">
+                            <h2 data-i18n="bh-solara-campaigns">الحملات الإعلانية النشطة</h2>
+                        </div>
+                        <div id="solara-campaigns-list" class="insight-list">
+                            <!-- Populated by JS -->
+                            <div class="insight-item">
+                                <span class="insight-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M12 2a3 3 0 0 0-3 3h6a3 3 0 0 0-3-3zm0 3v15M5 8h14l-2 12H7L5 8z"/></svg></span>
+                                <div style="text-align: start;">
+                                    <h4 data-i18n="bh-solara-camp1-title">حملة الصيف للأزياء المحتشمة (SOLARA Summer)</h4>
+                                    <p data-i18n="bh-solara-camp1-desc">جدولة النشر: flat lay صور فقط بدون موسيقى وبدون عارضات.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Freelance Sub-panel -->
+                <div id="subtab-freelance" class="subtab-content">
+                    <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+                        <div class="stat-card">
+                            <h3 data-i18n="bh-freelance-clients-title">العملاء النشطين</h3>
+                            <p class="stat-value">3</p>
+                            <span class="stat-desc">Hedyet, Khem, VentureCycle</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 data-i18n="bh-freelance-tasks-title">المهام النشطة</h3>
+                            <p class="stat-value" style="color: var(--success);">5</p>
+                            <span class="stat-desc" data-i18n="bh-freelance-tasks-desc">تذاكر Jira للمطورين</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 data-i18n="bh-freelance-upwork-title">حساب Upwork</h3>
+                            <p class="stat-value" style="color: var(--warning); font-size: 1.1rem;">Top Rated</p>
+                            <span class="stat-desc" data-i18n="bh-freelance-upwork-desc">مؤشرات الأداء متمتازة</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="section-header">
+                            <h2 data-i18n="bh-freelance-clients">العملاء النشطون ومشاريعهم</h2>
+                        </div>
+                        <div id="freelance-clients-list" class="insight-list">
+                            <!-- Populated by JS -->
+                            <div class="insight-item">
+                                <span class="insight-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>
+                                <div style="text-align: start;">
+                                    <h4 data-i18n="bh-freelance-proj1-title">Hedyet - متجر هدايا الكتروني</h4>
+                                    <p data-i18n="bh-freelance-proj1-desc">المشروع: تطبيق ويب Next.js متكامل. الحالة: مرحلة فحص المدفوعات.</p>
+                                </div>
+                            </div>
+                            <div class="insight-item">
+                                <span class="insight-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M4 18v-8M8 18v-8M12 18v-8M16 18v-8M20 18v-8M2 22h20M2 10l10-8 10 8M4 22v-4h16v4"/></svg></span>
+                                <div style="text-align: start;">
+                                    <h4 data-i18n="bh-freelance-proj2-title">Khem - منصة تراثية مصرية</h4>
+                                    <p data-i18n="bh-freelance-proj2-desc">المشروع: بورتفوليو تفاعلي وتصميم UI/UX.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE: Content Studio -->
+            <section id="tab-content-studio" class="tab-content">
+                <!-- Kanban Board Pipeline -->
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="section-header">
+                        <h2 data-i18n="cs-title">خط إنتاج المحتوى (Content Pipeline)</h2>
+                        <button class="btn btn-primary btn-sm" id="btn-add-content" data-i18n="cs-btn-add-content">+ محتوى جديد</button>
+                    </div>
+                    <div class="content-pipeline" id="content-pipeline-container">
+                        <div class="pipeline-column" data-stage="idea">
+                            <h4 data-i18n="cs-idea">فكرة</h4>
+                            <div class="pipeline-items" id="pipeline-idea">
+                                <div class="pipeline-card-item">
+                                    <h5 data-i18n="cs-card1-title">تصوير كواليس فيلا التجمع</h5>
+                                    <span>Tohamy</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pipeline-column" data-stage="script">
+                            <h4 data-i18n="cs-script">سكريبت</h4>
+                            <div class="pipeline-items" id="pipeline-script">
+                                <div class="pipeline-card-item">
+                                    <h5 data-i18n="cs-card2-title">طرح عبايات صيف SOLARA</h5>
+                                    <span>SOLARA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pipeline-column" data-stage="shooting">
+                            <h4 data-i18n="cs-shooting">تصوير</h4>
+                            <div class="pipeline-items" id="pipeline-shooting"></div>
+                        </div>
+                        <div class="pipeline-column" data-stage="editing">
+                            <h4 data-i18n="cs-editing">مونتاج</h4>
+                            <div class="pipeline-items" id="pipeline-editing">
+                                <div class="pipeline-card-item">
+                                    <h5 data-i18n="cs-card3-title">تحويل واجهة شقة الشيخ زايد</h5>
+                                    <span>Tohamy</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pipeline-column" data-stage="review">
+                            <h4 data-i18n="cs-review">مراجعة</h4>
+                            <div class="pipeline-items" id="pipeline-review"></div>
+                        </div>
+                        <div class="pipeline-column" data-stage="published">
+                            <h4 data-i18n="cs-published">منشور</h4>
+                            <div class="pipeline-items" id="pipeline-published"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-two-col">
+                    <!-- Local Media Processor -->
+                    <div class="card" style="padding: 1.8rem; margin-bottom: 0;">
+                        <div class="section-header" style="margin-bottom: 1.2rem;">
+                            <h2 data-i18n="tool-media-title">معالج الميديا المحلي (Local Media Processor)</h2>
+                        </div>
+                        <p class="desc-text" data-i18n="tool-media-desc" style="margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                            قم بتعديل مقاسات صور المنتجات للـ E-commerce محلياً بالكامل لحماية خصوصية بياناتك وتوفير تكاليف الـ APIs.
+                        </p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                                <label data-i18n="tool-media-label-path" style="font-size: 0.85rem; color: var(--text-muted);">مسار ملف الصورة المحلي (Image Path):</label>
+                                <input type="text" id="tool-image-path" data-i18n-placeholder="tool-media-placeholder-path" placeholder="مثال: /Users/ahmedissamramadan/Downloads/image.jpg">
+                            </div>
+                            
+                            <div style="display: flex; gap: 1rem; align-items: center;">
+                                <div style="display: flex; flex-direction: column; gap: 0.4rem; flex: 1;">
+                                    <label data-i18n="tool-media-label-ratio" style="font-size: 0.85rem; color: var(--text-muted);">أبعاد الصورة المستهدفة:</label>
+                                    <select id="tool-aspect-ratio">
+                                        <option value="1:1" data-i18n="tool-media-ratio-square">مربع (1:1)</option>
+                                        <option value="4:5" data-i18n="tool-media-ratio-portrait">صورة رأسية (4:5)</option>
+                                    </select>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem;">
+                                    <input type="checkbox" id="tool-remove-bg" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <label for="tool-remove-bg" data-i18n="tool-media-label-bg" style="font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">إزالة الخلفية البيضاء</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="btn-run-media-processor" data-i18n="tool-media-btn" style="width: 100%;">معالجة وتحسين الصورة</button>
+                        
+                        <div id="media-processor-result" style="margin-top: 1.5rem; display: none; background: rgba(0, 0, 0, 0.4); border-radius: 12px; padding: 1.2rem; border: 1px solid var(--border-glass); font-size: 0.85rem;">
+                            <!-- Result content will load dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Montage / Copy Generator Command Card -->
+                    <div class="card" style="margin-bottom: 0;">
+                        <div class="section-header">
+                            <h2 data-i18n="sent-title-factory">الحملات والمونتاج (Campaign Factory)</h2>
+                        </div>
+                        <p class="desc-text" data-i18n="cs-copy-generator-desc" style="margin-bottom: var(--sp-4);">توليد نصوص إعلانية وأفكار للمونتاج فورية للعلامة التجارية لـ SOLARA (دون موسيقى ودون عارضات) أو مشاريع Tohamy.</p>
+                        <div class="harvest-console" id="campaign-factory-output" data-i18n="cs-copy-generator-placeholder" style="min-height: 200px; text-align: start; direction: rtl; font-family: var(--font-primary); font-size: 0.85rem; color: var(--text-primary); overflow-y: auto;">
+                            اضغط على إجراء سريع لإنشاء الحملة أو توليد السيناريو...
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE: Agent Console -->
+            <section id="tab-agent-console" class="tab-content">
+                <!-- Agent Communication Graph -->
+                <div class="dashboard-section card" style="margin-bottom: 20px;">
+                    <div class="section-header">
+                        <h2 data-i18n="graph-title">مخطط شبكة اتصالات الوكلاء (Agent Communication Graph)</h2>
+                        <button class="btn btn-sm btn-outline" id="btn-re-orchestrate" data-i18n="btn-re-orchestrate">إعادة تنسيق الشبكة</button>
+                    </div>
+                    <div class="graph-container" style="height: 250px;">
+                        <svg class="agent-graph" id="agent-graph-svg" viewBox="0 0 800 400" style="height: 100%;">
+                            <!-- Nodes and Lines will be rendered dynamically -->
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- AI App Controller -->
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="section-header">
+                        <h2 data-i18n="app-ctrl-title">مركز التحكم في التطبيقات الذكية</h2>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn btn-primary btn-sm" id="btn-launch-all-apps" onclick="launchAllManagedApps()" data-i18n="app-ctrl-launch-all">تشغيل الكل</button>
+                            <button class="btn btn-outline btn-sm" id="btn-quit-all-apps" onclick="quitAllManagedApps()" data-i18n="app-ctrl-quit-all">إيقاف الكل</button>
+                        </div>
+                    </div>
+                    <div class="app-control-grid" id="app-control-grid">
+                        <!-- App cards rendered dynamically by app.js -->
+                    </div>
+                    <div class="app-actions-log" id="app-actions-log" style="margin-top: 16px; max-height: 120px; overflow-y: auto; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-tertiary);">
+                        <div class="log-placeholder" data-i18n="app-ctrl-log-placeholder">سجل العمليات سيظهر هنا...</div>
+                    </div>
+                </div>
+
+                <!-- Deployed Agents Grid -->
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="section-header">
+                        <h2 data-i18n="agents-title-tab">الوكلاء المصممون والمشغلون</h2>
+                        <button class="btn btn-primary" id="btn-spawn-agent" data-i18n="btn-spawn">+ تفويض وكيل جديد</button>
+                    </div>
+                    <div class="agents-list" id="agents-grid">
+                        <!-- Agent dynamic cards -->
+                    </div>
+                </div>
+
+                <!-- Sentiment Harvester (Market Survey inside Agent Console) -->
+                <div class="dashboard-two-col">
+                    <div class="card" style="margin-bottom: 0;">
+                        <div class="section-header">
+                            <h2 data-i18n="sent-title-tab">أداة الاستطلاع وسحب آراء المستخدمين (Sentiment Harvester)</h2>
+                            <button class="btn btn-primary btn-sm" id="btn-trigger-harvest" data-i18n="btn-harvest-run">بدء عملية السحب الآن</button>
+                        </div>
+                        <div class="harvest-console" id="harvest-console-output" data-i18n="sent-console-placeholder">
+                            اضغط على "بدء عملية السحب الآن" لتشغيل السكريبت...
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 0;">
+                        <div class="section-header">
+                            <h2 data-i18n="raw-feedback-title">الآراء والملاحظات التفصيلية (Detailed User Logs)</h2>
+                            <span class="tag" style="background: var(--success-soft); color: var(--success);" id="harvested-count-badge" data-i18n="harvested-badge">سجلات حية: 2</span>
+                        </div>
+                        <div class="insight-list" id="harvested-raw-logs-container" style="max-height: 200px; overflow-y: auto;">
+                            <!-- Will load dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE: Project Ops -->
+            <section id="tab-project-ops" class="tab-content">
+                <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+                    <div class="stat-card">
+                        <h3 data-i18n="po-sprint">السبرنت النشط</h3>
+                        <p class="stat-value" id="sprint-name">EPL - Sprint 2</p>
+                        <span class="stat-desc" data-i18n="po-sync-desc">تزامن حي مع Jira</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="po-in-progress">مهام جارية</h3>
+                        <p class="stat-value" id="tasks-in-progress" data-i18n="po-tasks-ip-val" style="color: var(--accent-cyan);">2 مهام</p>
+                        <span class="stat-desc" data-i18n="po-tasks-ip-desc">جاري العمل عليها</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="po-done">مهام مكتملة</h3>
+                        <p class="stat-value" id="tasks-done" data-i18n="po-tasks-done-val" style="color: var(--success);">5 مهام</p>
+                        <span class="stat-desc" data-i18n="po-tasks-done-desc">مكتملة هذا السبرنت</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="section-header">
+                        <h2 data-i18n="po-title">لوحة مهام المشاريع (Jira Workspace Board)</h2>
+                        <button class="btn btn-outline btn-sm" id="btn-sync-jira" data-i18n="po-btn-sync">مزامنة Jira</button>
+                    </div>
+                    <div id="project-board" class="insight-list">
+                        <!-- Simulated or real Jira tasks list -->
+                        <div class="insight-item" style="border-inline-start: 3px solid var(--accent-cyan);">
+                            <span class="insight-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+                            <div style="text-align: start; width: 100%;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong data-i18n="po-task1-title">EPL-101: بناء بوابة الدفع لمتجر Hedyet</strong>
+                                    <span class="tag" style="background: rgba(0, 191, 255, 0.1); color: var(--accent-cyan);">IN PROGRESS</span>
+                                </div>
+                                <p data-i18n="po-task1-desc" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">العميل: Hedyet. الوقت المسجل اليوم: 2.1 ساعة (مسجلة تلقائياً).</p>
+                            </div>
+                        </div>
+                        <div class="insight-item" style="border-inline-start: 3px solid var(--accent-purple);">
+                            <span class="insight-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><path d="M12 2C17.52 2 22 6.48 22 12s-4.48 10-10 10c-1.16 0-2.27-.2-3.3-.56-.47-.16-.94.13-1.04.62l-.22 1.05c-.09.43-.51.7-1 .59C5.46 23.47 5.09 23 5.2 22.48l.22-1.05c.1-.48-.22-1.05-.7-.96L3.67 20.7c-.45.08-.87-.22-.96-.66a9.96 9.96 0 0 1-.55-3.3C2.16 11.23 6.64 6.75 12 6.75"/></svg></span>
+                            <div style="text-align: start; width: 100%;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong data-i18n="po-task2-title">KAN-304: إنتاج وتصميم واجهات SOLARA الرئيسية</strong>
+                                    <span class="tag" style="background: rgba(138, 43, 226, 0.1); color: var(--accent-purple);">IN REVIEW</span>
+                                </div>
+                                <p data-i18n="po-task2-desc" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">العميل: SOLARA. مراجعة الباباراتس والتصاميم الزجاجية.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE: Finance Tracker -->
+            <section id="tab-finance" class="tab-content">
+                <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+                    <div class="stat-card">
+                        <h3 data-i18n="fi-total-revenue">إجمالي الإيرادات</h3>
+                        <p class="stat-value" id="total-revenue" style="color: var(--success);">$0</p>
+                        <span class="stat-desc" data-i18n="gen-this-month">خلال الشهر الحالي</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="fi-total-expenses">إجمالي المصروفات</h3>
+                        <p class="stat-value" id="total-expenses" style="color: var(--error);">$0</p>
+                        <span class="stat-desc" data-i18n="gen-this-month">خلال الشهر الحالي</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="fi-net-profit">صافي الربح</h3>
+                        <p class="stat-value" id="net-profit">$0</p>
+                        <span class="stat-desc" data-i18n="gen-this-month">نسبة الأرباح صافية</span>
+                    </div>
+                </div>
+
+                <div class="dashboard-two-col">
+                    <!-- Income Entry -->
+                    <div class="card">
+                        <div class="section-header">
+                            <h2 data-i18n="fi-add-income">تسجيل إيراد جديد</h2>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; gap: 1rem;">
+                                <div style="display: flex; flex-direction: column; gap: 0.3rem; flex: 1;">
+                                    <label data-i18n="fi-label-amount">القيمة ($):</label>
+                                    <input type="text" id="fi-income-amount" placeholder="e.g. 500">
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 0.3rem; flex: 1;">
+                                    <label data-i18n="fi-label-source">المصدر / المشروع:</label>
+                                    <select id="fi-income-source">
+                                        <option value="tohamy" data-i18n="cc-business-tohamy">التهامي للتشطيبات</option>
+                                        <option value="solara" data-i18n="cc-business-solara">SOLARA</option>
+                                        <option value="freelance" data-i18n="cc-business-freelance">خدمات رقمية (Upwork)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                                <label data-i18n="fi-label-note">ملاحظة:</label>
+                                <input type="text" id="fi-income-desc" data-i18n-placeholder="fi-placeholder-income-note" placeholder="e.g. دفعة فيلا التجمع الخامس">
+                            </div>
+                            <button class="btn btn-primary" id="btn-save-income" data-i18n="fi-btn-save-income" style="margin-top: 10px;">حفظ الإيراد</button>
+                        </div>
+                    </div>
+
+                    <!-- Expense Entry -->
+                    <div class="card">
+                        <div class="section-header">
+                            <h2 data-i18n="fi-add-expense">تسجيل مصروف جديد</h2>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; gap: 1rem;">
+                                <div style="display: flex; flex-direction: column; gap: 0.3rem; flex: 1;">
+                                    <label data-i18n="fi-label-amount">القيمة ($):</label>
+                                    <input type="text" id="fi-expense-amount" placeholder="e.g. 50">
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 0.3rem; flex: 1;">
+                                    <label data-i18n="fi-label-category">التصنيف / النشاط:</label>
+                                    <select id="fi-expense-category">
+                                        <option value="ads" data-i18n="fi-category-ads">إعلانات وماركتينج</option>
+                                        <option value="hosting" data-i18n="fi-category-hosting">استضافة وسيرفرات</option>
+                                        <option value="tools" data-i18n="fi-category-tools">أدوات واشتراكات AI</option>
+                                        <option value="other" data-i18n="fi-category-other">خامات ومصاريف أخرى</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                                <label data-i18n="fi-label-note">ملاحظة:</label>
+                                <input type="text" id="fi-expense-desc" data-i18n-placeholder="fi-placeholder-expense-note" placeholder="e.g. اشتراك ClickHouse Cloud">
+                            </div>
+                            <button class="btn btn-outline" id="btn-save-expense" data-i18n="fi-btn-save-expense" style="margin-top: 10px; border-color: var(--error); color: var(--error);">حفظ المصروف</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE: Knowledge Vault -->
+            <section id="tab-knowledge-vault" class="tab-content">
+                <div class="search-bar-container" style="margin-bottom: 20px;">
+                    <input type="text" id="knowledge-search" placeholder="ابحث في كل معرفتك السابقة... (Cmd+K)" data-i18n-placeholder="kv-search-placeholder" class="search-bar-input" style="padding: 14px 20px; font-size: 1rem; border-radius: 12px; background: var(--bg-input);">
+                </div>
+
+                <!-- Database metrics -->
+                <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+                    <div class="stat-card">
+                        <h3 data-i18n="mcp-ch-title">ClickHouse Cloud</h3>
+                        <p class="stat-value" id="mcp-ch-count">N/A</p>
+                        <span class="stat-desc" id="mcp-ch-desc" data-i18n="mcp-ch-desc">البيانات المزامنة في السحابة</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="mcp-stitch-title">Stitch App</h3>
+                        <p class="stat-value" id="mcp-stitch-count">0</p>
+                        <span class="stat-desc" id="mcp-stitch-desc" data-i18n="mcp-stitch-desc">مشاريع Figma المزامنة</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3 data-i18n="mcp-jira-title">Atlassian Jira</h3>
+                        <p class="stat-value" id="mcp-jira-count">0</p>
+                        <span class="stat-desc" id="mcp-jira-desc" data-i18n="mcp-jira-desc">مهام Jira المزامنة</span>
+                    </div>
+                </div>
+
+                <!-- SVG Activity Line/Area Chart -->
+                <div class="card" style="padding: 1.8rem; margin-bottom: 20px;">
+                    <div class="section-header" style="margin-bottom: 1rem;">
+                        <h2 data-i18n="knowledge-chart-title">معدل النشاط اليومي (سجلات الـ Activity Log لآخر 7 أيام)</h2>
+                        <span class="tag" id="chart-total-count" data-i18n="kv-chart-total" style="background: rgba(99, 102, 241, 0.1); color: var(--accent-purple);">0 سجل إجمالي</span>
+                    </div>
+                    <div class="graph-container" style="height: 220px; overflow: visible; position: relative;">
+                        <svg id="knowledge-chart-svg" viewBox="0 0 700 200" style="width: 100%; height: 100%; overflow: visible; font-family: 'Readex Pro', sans-serif;">
+                            <!-- Will render SVG path, grid, and points dynamically -->
+                        </svg>
+                        <div id="chart-tooltip" style="display: none; position: absolute; background: rgba(15, 23, 42, 0.95); border: 1px solid var(--accent-purple); padding: 8px 12px; border-radius: 8px; font-size: 0.75rem; pointer-events: none; z-index: 10; box-shadow: 0 4px 20px rgba(0,0,0,0.4); color: white;"></div>
+                    </div>
+                </div>
+
+                <!-- Two columns: Controller & Table -->
+                <div class="dashboard-two-col">
+                    <!-- Column 1: Remote Controller Console -->
+                    <div class="card console-card" style="display: flex; flex-direction: column; min-height: 300px; margin-bottom: 0;">
+                        <div class="section-header" style="margin-bottom: 1rem;">
+                            <h2 data-i18n="remote-controller-title">خدمة الاتصال البعيد mcp-remote</h2>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-sm btn-outline" id="btn-clear-remote-logs" style="padding: 0.35rem 0.6rem; display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; display: block;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
+                                <button class="btn btn-sm" id="btn-toggle-remote" style="background: var(--accent-purple); color: white; padding: 0.35rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;" data-i18n="btn-service-start">تشغيل الخدمة</button>
+                            </div>
+                        </div>
+                        <p class="desc-text" data-i18n="remote-controller-desc" style="font-size: 0.8rem; margin-top: -0.5rem; margin-bottom: 1rem; color: var(--text-muted);">قم بتشغيل أو إيقاف عملية npx -y mcp-remote في الخلفية لتسهيل ربط الـ MCPs بمشاريعك الخارجية.</p>
+                        <div class="console-output" id="remote-console-logs" data-i18n="kv-remote-ready" style="flex-grow: 1; background: rgba(0, 0, 0, 0.4); border-radius: 12px; padding: 1rem; font-family: monospace; font-size: 0.75rem; color: #a7f3d0; overflow-y: auto; text-align: left; direction: ltr; min-height: 150px;">
+                            جاهز للتشغيل. اضغط على زر "تشغيل الخدمة" لبدء mcp-remote.
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Recent Logs Table -->
+                    <div class="card" style="display: flex; flex-direction: column; min-height: 300px; margin-bottom: 0;">
+                        <div class="section-header" style="margin-bottom: 1rem;">
+                            <h2 data-i18n="recent-logs-title">آخر الأنشطة المزامنة في ClickHouse</h2>
+                            <span class="tag" style="background: rgba(6, 182, 212, 0.1); color: var(--accent-cyan);" data-i18n="tag-live">مباشر</span>
+                        </div>
+                        <div style="overflow-y: auto; flex-grow: 1; border: 1px solid var(--border-glass); border-radius: 12px; max-height: 200px;">
+                            <table style="width: 100%; border-collapse: collapse; text-align: start; font-size: 0.8rem;" id="table-knowledge-logs">
+                                <thead>
+                                    <tr style="background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border-glass);">
+                                        <th style="padding: 10px; color: var(--text-muted);" data-i18n="table-time">الوقت</th>
+                                        <th style="padding: 10px; color: var(--text-muted);" data-i18n="table-app">التطبيق</th>
+                                        <th style="padding: 10px; color: var(--text-muted);" data-i18n="table-window">النافذة</th>
+                                        <th style="padding: 10px; color: var(--text-muted);" data-i18n="table-duration">المدة</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-knowledge-logs-body">
+                                    <tr>
+                                        <td colspan="4" style="text-align: center; padding: 40px; color: var(--text-muted);" data-i18n="loading-text">جاري تحميل البيانات...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODULE: Settings & System Tools -->
+            <section id="tab-settings" class="tab-content">
+                <!-- Subtab Navigation -->
+                <div class="sub-nav" style="margin-bottom: 20px;">
+                    <button class="sub-nav-btn active" data-subtab="settings-general" data-i18n="settings-subtab-general">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;margin-inline-end:6px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>عام وملف التعريف
+                    </button>
+                    <button class="sub-nav-btn" data-subtab="settings-db" data-i18n="settings-subtab-db">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;margin-inline-end:6px;"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>قواعد البيانات
+                    </button>
+                    <button class="sub-nav-btn" data-subtab="settings-mcp" data-i18n="settings-subtab-mcp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;margin-inline-end:6px;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>شبكة MCP
+                    </button>
+                    <button class="sub-nav-btn" data-subtab="settings-tools" data-i18n="settings-subtab-tools">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;vertical-align:middle;margin-inline-end:6px;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>أدوات الأتمتة
+                    </button>
+                </div>
+
+                <!-- SUBTAB: General Settings -->
+                <div id="subtab-settings-general" class="subtab-content active">
+                    <div class="dashboard-two-col">
+                        <!-- Profile Card -->
+                        <div class="card" style="padding: 1.8rem; margin-bottom: 0;">
+                            <div class="section-header">
+                                <h2 data-i18n="settings-profile-title">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;vertical-align:middle;margin-inline-end:8px;color:var(--accent-purple);"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>ملف التعريف الشخصي
+                                </h2>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                                <div style="display: flex; gap: 1.2rem; align-items: center;">
+                                    <!-- Clickable Avatar with Upload -->
+                                    <div id="settings-avatar-wrapper" style="position: relative; cursor: pointer; width: 76px; height: 76px; flex-shrink: 0;" title="اضغط لتحميل صورة">
+                                        <div id="settings-avatar-display" style="width: 76px; height: 76px; border-radius: 50%; background: var(--accent-purple-soft); border: 2.5px solid var(--accent-purple); display: flex; align-items: center; justify-content: center; font-size: 2rem; overflow: hidden; transition: all 0.3s ease;">
+                                            <img id="settings-avatar-img" src="" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                                            <span id="settings-avatar-placeholder" style="color: var(--accent-purple); font-weight: 700; font-size: 1.8rem;">A</span>
+                                        </div>
+                                        <!-- Camera overlay icon -->
+                                        <div style="position: absolute; bottom: 0; right: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--accent-purple); border: 2px solid var(--bg-primary); display: flex; align-items: center; justify-content: center;">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                                        </div>
+                                        <input type="file" id="input-avatar-upload" accept="image/*" style="display: none;">
+                                    </div>
+                                    <div>
+                                        <h3 id="profile-display-name" style="color: white; margin-bottom: 0.2rem;">Ahmed Issam Ramadan</h3>
+                                        <span id="profile-display-role" style="font-size: 0.85rem; color: var(--accent-cyan);">AI & Automation Consultant</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 0.8rem; border-top: 1px solid var(--border-glass); padding-top: 1rem;">
+                                    <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                                        <label style="font-size: 0.8rem; color: var(--text-muted);" data-i18n="settings-label-name">الاسم بالكامل:</label>
+                                        <input type="text" id="input-profile-name" value="Ahmed Issam Ramadan" style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); padding: 8px 12px; border-radius: 6px; color: white;">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                                        <label style="font-size: 0.8rem; color: var(--text-muted);" data-i18n="settings-label-role">الدور المهني:</label>
+                                        <input type="text" id="input-profile-role" value="AI & Automation Consultant" style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); padding: 8px 12px; border-radius: 6px; color: white;">
+                                    </div>
+                                    <button class="btn btn-primary" id="btn-save-profile" data-i18n="gen-save" style="margin-top: 0.5rem; width: 100%;">حفظ التغييرات</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interface Controls -->
+                        <div class="card" style="padding: 1.8rem; margin-bottom: 0;">
+                            <div class="section-header">
+                                <h2 data-i18n="settings-interface-title">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;vertical-align:middle;margin-inline-end:8px;color:var(--accent-cyan);"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>تفضيلات الواجهة والنظام
+                                </h2>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border-glass);">
+                                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;color:var(--accent-cyan);flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                                        <div>
+                                            <h4 data-i18n="settings-lang-title" style="color: white; margin-bottom: 0.2rem;">لغة النظام</h4>
+                                            <p data-i18n="settings-lang-desc" style="font-size: 0.75rem; color: var(--text-muted);">اختر اللغة المفضلة لواجهة المستخدم</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline" id="lang-toggle-settings" style="min-width: 100px;">English</button>
+                                </div>
+
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border-glass);">
+                                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;color:var(--accent-purple);flex-shrink:0;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                                        <div>
+                                            <h4 data-i18n="settings-theme-title" style="color: white; margin-bottom: 0.2rem;">مظهر النظام</h4>
+                                            <p data-i18n="settings-theme-desc" style="font-size: 0.75rem; color: var(--text-muted);">تبديل بين الوضع الداكن والمظهر الفلكي</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-outline" id="theme-toggle-settings" data-i18n="btn-theme" style="min-width: 100px;">المظهر</button>
+                                </div>
+
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;color:#ffd700;flex-shrink:0;"><polyline points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polyline></svg>
+                                        <div>
+                                            <h4 data-i18n="settings-version-title" style="color: white; margin-bottom: 0.2rem;">إصدار النظام</h4>
+                                            <p style="font-size: 0.75rem; color: var(--text-muted);">Artelligence OS v1.2.0 (Premium Edition)</p>
+                                        </div>
+                                    </div>
+                                    <span class="tag" style="background: rgba(255, 215, 0, 0.1); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.25);">Premium</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBTAB: Databases Settings -->
+                <div id="subtab-settings-db" class="subtab-content">
+                    <div class="dashboard-two-col">
+                        <!-- ClickHouse Config -->
+                        <div class="card" style="padding: 1.8rem; margin-bottom: 0;">
+                            <div class="section-header">
+                                <h2 data-i18n="settings-db-ch-title">إعدادات ClickHouse Cloud</h2>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                                    <label style="font-size: 0.8rem; color: var(--text-muted);">Host:</label>
+                                    <input type="text" id="input-ch-host" value="localhost" style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); padding: 8px 12px; border-radius: 6px; color: white;">
+                                </div>
+                                <div style="display: flex; gap: 1rem;">
+                                    <div style="flex: 1; display: flex; flex-direction: column; gap: 0.3rem;">
+                                        <label style="font-size: 0.8rem; color: var(--text-muted);">Port:</label>
+                                        <input type="text" id="input-ch-port" value="8123" style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); padding: 8px 12px; border-radius: 6px; color: white;">
+                                    </div>
+                                    <div style="flex: 2; display: flex; flex-direction: column; gap: 0.3rem;">
+                                        <label style="font-size: 0.8rem; color: var(--text-muted);">User:</label>
+                                        <input type="text" id="input-ch-user" value="default" style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); padding: 8px 12px; border-radius: 6px; color: white;">
+                                    </div>
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                                    <label style="font-size: 0.8rem; color: var(--text-muted);">Password:</label>
+                                    <input type="password" id="input-ch-pass" value="••••••••" style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); padding: 8px 12px; border-radius: 6px; color: white;">
+                                </div>
+                                <button class="btn btn-outline" id="btn-test-ch" data-i18n="settings-db-btn-test" style="margin-top: 0.5rem; width: 100%;">اختبار الاتصال بالخادم</button>
+                            </div>
+                        </div>
+
+                        <!-- SQLite Config -->
+                        <div class="card" style="padding: 1.8rem; margin-bottom: 0;">
+                            <div class="section-header">
+                                <h2 data-i18n="settings-db-lite-title">قاعدة البيانات المحلية SQLite</h2>
+                            </div>
+                            <p class="desc-text" data-i18n="settings-db-lite-desc" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+                                يتم استخدام قاعدة البيانات المحلية لمزامنة وحفظ سياق النوافذ النشطة وبيانات كتالوج Upwork.
+                            </p>
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                                    <label style="font-size: 0.8rem; color: var(--text-muted);" data-i18n="settings-db-lite-label-path">مسار ملف قاعدة البيانات (.db):</label>
+                                    <input type="text" id="input-sqlite-path" value="/Users/ahmedissamramadan/.gemini/antigravity/scratch/local-context-broker/context.db" style="background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); padding: 8px 12px; border-radius: 6px; color: white; font-family: monospace; font-size: 0.8rem; width: 100%;">
+                                </div>
+                                <button class="btn btn-outline" id="btn-test-sqlite" data-i18n="settings-db-btn-test-sqlite" style="margin-top: 0.5rem; width: 100%;">التحقق من سلامة الملف</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBTAB: MCP Servers Settings -->
+                <div id="subtab-settings-mcp" class="subtab-content">
+                    <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 20px;">
+                        <div class="stat-card">
+                            <h3 data-i18n="settings-mcp-active">خوادم MCP النشطة</h3>
+                            <p class="stat-value" id="active-mcp-count" style="color: var(--accent-cyan);">6 / 18</p>
+                            <span class="stat-desc" data-i18n="settings-mcp-active-desc">تعمل وتستجيب حالياً</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 data-i18n="settings-mcp-n8n">سير العمل في n8n</h3>
+                            <p class="stat-value" id="n8n-workflows-count" data-i18n="settings-mcp-n8n-status" style="color: var(--accent-purple);">مستعد للربط</p>
+                            <span class="stat-desc" data-i18n="settings-mcp-n8n-desc">المنصة مثبتة محلياً</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 data-i18n="settings-mcp-android">أجهزة الأندرويد</h3>
+                            <p class="stat-value" id="android-devices-count" data-i18n="settings-mcp-android-status" style="color: var(--success);">1 متصل</p>
+                            <span class="stat-desc" data-i18n="settings-mcp-android-desc">مربوط عبر Management API</span>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 1.8rem; margin-bottom: 0;">
+                        <div class="section-header">
+                            <h2 data-i18n="settings-mcp-list-title">حالة خوادم ومقابس الـ MCPs المربوطة</h2>
+                        </div>
+                        <div class="insight-list" id="mcp-servers-list">
+                            <div class="insight-item">
+                                <span class="insight-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+                                <div style="text-align: start; width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <strong>StitchMCP</strong>
+                                        <p style="font-size: 0.75rem; color: var(--text-muted);" data-i18n="settings-mcp-stitch-desc">خادم مزامنة واجهات Google Stitch وتصدير الأصول.</p>
+                                    </div>
+                                    <span class="tag" style="background: rgba(46, 204, 113, 0.1); color: var(--success);">ACTIVE</span>
+                                </div>
+                            </div>
+                            <div class="insight-item">
+                                <span class="insight-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+                                <div style="text-align: start; width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <strong>Atlassian MCP</strong>
+                                        <p style="font-size: 0.75rem; color: var(--text-muted);" data-i18n="settings-mcp-jira-desc">الاتصال بمنصة Jira و Confluence لتعديل المهام.</p>
+                                    </div>
+                                    <span class="tag" style="background: rgba(46, 204, 113, 0.1); color: var(--success);">ACTIVE</span>
+                                </div>
+                            </div>
+                            <div class="insight-item">
+                                <span class="insight-icon" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+                                <div style="text-align: start; width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                                    <div>
+                                        <strong>Chrome DevTools MCP</strong>
+                                        <p style="font-size: 0.75rem; color: var(--text-muted);" data-i18n="settings-mcp-chrome-desc">أتمتة المتصفح وأخذ لقطات الشاشة وتحليل Lighthouse.</p>
+                                    </div>
+                                    <span class="tag" style="background: rgba(255, 255, 255, 0.05); color: var(--text-muted);">OFFLINE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBTAB: Automation Tools Settings -->
+                <div id="subtab-settings-tools" class="subtab-content">
+                    <div class="dashboard-two-col">
+                        <!-- Chrome Debug Assist -->
+                        <div class="card" style="padding: 1.8rem; margin-bottom: 0;">
+                            <div class="section-header" style="margin-bottom: 1.2rem;">
+                                <h2 data-i18n="tool-chrome-title">مساعد تصحيح متصفح Chrome (Chrome Debug Assist)</h2>
+                            </div>
+                            <p class="desc-text" data-i18n="tool-chrome-desc" style="margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                                قم بفحص حالة منفذ تصحيح Chrome Remote Debugging (Port 9222) للتأكد من إمكانية ربط الوكلاء والمستعرضات الذكية.
+                            </p>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid var(--border-glass);">
+                                    <span data-i18n="tool-chrome-status-label">حالة الاتصال بمنفذ 9222:</span>
+                                    <span id="chrome-debug-status" class="tag" data-i18n="tool-chrome-status-unknown" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">غير معروف</span>
+                                </div>
+                                
+                                <div id="chrome-instructions-card" style="display: none; background: rgba(230, 126, 34, 0.05); border: 1px solid var(--warning); border-radius: 8px; padding: 1rem; font-size: 0.8rem; line-height: 1.5; color: var(--text-muted);">
+                                    <h4 data-i18n="tool-chrome-instructions-title" style="color: var(--warning); margin-bottom: 0.5rem;">إرشاد تشغيل وضع الـ Debugging في Chrome:</h4>
+                                    <p data-i18n="tool-chrome-instructions-desc" style="margin-bottom: 0.5rem;">يرجى إغلاق Chrome بالكامل وتشغيله من الـ Terminal باستخدام الأمر التالي لتفعيل وضع التصحيح البعيد:</p>
+                                    <code style="display: block; background: rgba(0,0,0,0.4); padding: 0.5rem; border-radius: 6px; font-family: monospace; border: 1px solid var(--border-glass); word-break: break-all; margin-bottom: 0.5rem; color: white;">
+                                        open -a "Google Chrome" --args --remote-debugging-port=9222
+                                    </code>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-outline" id="btn-check-chrome-debug" data-i18n="tool-chrome-btn" style="width: 100%;">فحص حالة الاتصال بالمنفذ</button>
+                        </div>
+
+                        <!-- Upwork Catalog Automator Card -->
+                        <div class="card" style="padding: 1.8rem; margin-bottom: 0;" id="upwork-automator-card">
+                            <div class="section-header" style="margin-bottom: 1.2rem;">
+                                <h2 data-i18n="tool-upwork-title">أتمتة كتالوج خدمات Upwork (Upwork Catalog Automator)</h2>
+                            </div>
+                            <p class="desc-text" data-i18n="tool-upwork-desc" style="margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                                قم بإدارة ورفع باقات خدماتك الرقمية إلى Upwork Project Catalog تلقائياً بنقرة زر واحدة.
+                            </p>
+                            
+                            <!-- Catalogs List -->
+                            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;" id="upwork-catalogs-list">
+                                <div style="text-align: center; color: var(--text-muted); padding: 1rem;" data-i18n="tool-upwork-loading">جاري تحميل الكتالوجات من قاعدة البيانات...</div>
+                            </div>
+
+                            <!-- Mini Live Console -->
+                            <div class="console-card" style="margin-top: 1rem; margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; margin-bottom: 0.5rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
+                                    <span data-i18n="tool-upwork-console-title">شاشة معالجة الرفع (Automation Console):</span>
+                                    <button class="btn btn-sm btn-outline" id="btn-clear-upwork-console" data-i18n="tool-upwork-clear" style="padding: 2px 8px; font-size: 0.7rem; border-radius: 4px;">مسح</button>
+                                </div>
+                                <div class="console-output" id="upwork-console-output" style="height: 150px; max-height: 150px; overflow-y: auto; font-size: 0.75rem; background: #040408; padding: 10px; border-radius: 6px; border: 1px solid var(--border-glass); color: var(--accent-cyan); font-family: monospace; white-space: pre-wrap; text-align: left;">
+                                    [System] Console ready. Select a catalog to upload.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+ 
+    <!-- Command Palette Modal -->
+    <div id="command-palette" class="modal-overlay" style="display: none; align-items: flex-start; padding-top: 15vh;">
+        <div class="card modal-content" style="width: 600px; max-height: 400px; padding: 0; overflow: hidden; border-color: var(--accent-purple);">
+            <input type="text" id="cmd-palette-input" placeholder="ابحث عن أي شيء... (Cmd+K)" data-i18n-placeholder="cp-placeholder" style="width: 100%; padding: 16px 20px; background: transparent; border: none; border-bottom: 1px solid var(--border-glass); color: white; font-size: 1rem; outline: none;">
+            <div id="cmd-palette-results" style="max-height: 300px; overflow-y: auto; padding: 8px;">
+                <!-- Command Palette search results -->
+            </div>
+        </div>
+    </div>
+ 
+    <!-- Spawn Agent Modal -->
+    <div id="spawn-agent-modal" class="modal-overlay" style="display: none;">
+        <div class="card modal-content" style="width: 450px; padding: 2.2rem; border-color: var(--accent-purple); box-shadow: 0 0 25px var(--glow-purple); position: relative; z-index: 1001;">
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+                <h2 data-i18n="modal-title">تفويض وكيل ذكي جديد</h2>
+                <span id="close-modal" style="cursor: pointer; font-size: 1.5rem; color: var(--text-muted); font-weight: bold;">×</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                    <label style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="modal-name">اسم الوكيل (Agent Name)</label>
+                    <input type="text" id="new-agent-name" placeholder="e.g. Media Processor">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                    <label style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="modal-role-ar">دور الوكيل بالعربية</label>
+                    <input type="text" id="new-agent-role-ar" data-i18n-placeholder="modal-role-ar-placeholder" placeholder="e.g. معالجة وتعديل الصور محلياً">
+                </div>uted); padding: 1rem;">جاري تحميل الكتالوجات من قاعدة البيانات...</div>
+                            </div>
+
+                            <!-- Mini Live Console -->
+                            <div class="console-card" style="margin-top: 1rem; margin-bottom: 1rem;">
+                                <div style="font-size: 0.8rem; margin-bottom: 0.5rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center;">
+                                    <span>شاشة معالجة الرفع (Automation Console):</span>
+                                    <button class="btn btn-sm btn-outline" id="btn-clear-upwork-console" style="padding: 2px 8px; font-size: 0.7rem; border-radius: 4px;">مسح</button>
+                                </div>
+                                <div class="console-output" id="upwork-console-output" style="height: 150px; max-height: 150px; overflow-y: auto; font-size: 0.75rem; background: #040408; padding: 10px; border-radius: 6px; border: 1px solid var(--border-glass); color: var(--accent-cyan); font-family: monospace; white-space: pre-wrap; text-align: left;">
+                                    [System] Console ready. Select a catalog to upload.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Command Palette Modal -->
+    <div id="command-palette" class="modal-overlay" style="display: none; align-items: flex-start; padding-top: 15vh;">
+        <div class="card modal-content" style="width: 600px; max-height: 400px; padding: 0; overflow: hidden; border-color: var(--accent-purple);">
+            <input type="text" id="cmd-palette-input" placeholder="ابحث عن أي شيء... (Cmd+K)" data-i18n-placeholder="cp-placeholder" style="width: 100%; padding: 16px 20px; background: transparent; border: none; border-bottom: 1px solid var(--border-glass); color: white; font-size: 1rem; outline: none;">
+            <div id="cmd-palette-results" style="max-height: 300px; overflow-y: auto; padding: 8px;">
+                <!-- Command Palette search results -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Spawn Agent Modal -->
+    <div id="spawn-agent-modal" class="modal-overlay" style="display: none;">
+        <div class="card modal-content" style="width: 450px; padding: 2.2rem; border-color: var(--accent-purple); box-shadow: 0 0 25px var(--glow-purple); position: relative; z-index: 1001;">
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+                <h2 data-i18n="modal-title">تفويض وكيل ذكي جديد</h2>
+                <span id="close-modal" style="cursor: pointer; font-size: 1.5rem; color: var(--text-muted); font-weight: bold;">×</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                    <label style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="modal-name">اسم الوكيل (Agent Name)</label>
+                    <input type="text" id="new-agent-name" placeholder="e.g. Media Processor">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                    <label style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="modal-role-ar">دور الوكيل بالعربية</label>
+                    <input type="text" id="new-agent-role-ar" data-i18n-placeholder="modal-role-ar-placeholder" placeholder="e.g. معالجة وتعديل الصور محلياً">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                    <label style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="modal-role-en">Agent Role in English</label>
+                    <input type="text" id="new-agent-role-en" placeholder="e.g. Local image cropping and processing">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                    <label style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="modal-icon">رمز الوكيل (Agent Code/Class)</label>
+                    <input type="text" id="new-agent-icon" placeholder="e.g. AG" style="width: 60px; text-align: center;">
+                </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+                <button class="btn btn-outline" id="btn-cancel-spawn" data-i18n="modal-cancel">إلغاء</button>
+                <button class="btn btn-primary" id="btn-submit-spawn" data-i18n="modal-submit">تفويض وإطلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

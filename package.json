@@ -1,0 +1,46 @@
+{
+  "name": "artelligence-os",
+  "version": "1.0.0",
+  "description": "Artelligence OS – Unified Digital Workspace & Agent Orchestrator",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "harvest": "bun run scripts/sentiment_harvester.ts",
+    "build": "npx electron-builder --mac --dir",
+    "package": "npx electron-builder --mac"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3",
+    "typescript": "^5.0.0"
+  },
+  "build": {
+    "appId": "com.artelligence.os",
+    "productName": "Artelligence OS",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "splash.html",
+      "style.css",
+      "app.js",
+      "src/",
+      "assets/",
+      "icon.png",
+      "package.json"
+    ]
+  }
+}
