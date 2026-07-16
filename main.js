@@ -218,9 +218,33 @@ function getBrowserUrl(appName) {
   return new Promise((resolve) => {
     let script = '';
     if (appName === "Google Chrome") {
-      script = 'tell application "Google Chrome" to get URL of active tab of window 1';
+      script = `
+tell application "Google Chrome"
+  try
+    if (count of windows) > 0 then
+      return URL of active tab of window 1
+    else
+      return ""
+    end if
+  on error
+    return ""
+  end try
+end tell
+      `;
     } else if (appName === "Safari") {
-      script = 'tell application "Safari" to get URL of current tab of window 1';
+      script = `
+tell application "Safari"
+  try
+    if (count of windows) > 0 then
+      return URL of current tab of window 1
+    else
+      return ""
+    end if
+  on error
+    return ""
+  end try
+end tell
+      `;
     } else {
       resolve("");
       return;
@@ -241,18 +265,22 @@ function getActiveWindowDetails() {
     const { spawn } = require('child_process');
     const appleScript = `
 tell application "System Events"
+  try
+    set frontmostProcess to first process whose frontmost is true
+    set processName to name of frontmostProcess
     try
-        set frontmostProcess to first process whose frontmost is true
-        set processName to name of frontmostProcess
-        try
-            set windowTitle to name of first window of frontmostProcess
-        on error
-            set windowTitle to ""
-        end try
-        return processName & "|||" & windowTitle
+      if (count of windows of frontmostProcess) > 0 then
+        set windowTitle to name of first window of frontmostProcess
+      else
+        set windowTitle to ""
+      end if
     on error
-        return "Unknown|||Unknown"
+      set windowTitle to ""
     end try
+    return processName & "|||" & windowTitle
+  on error
+    return "Unknown|||Unknown"
+  end try
 end tell
     `;
     const proc = spawn('osascript');
@@ -604,7 +632,8 @@ ipcMain.handle('agent:execute', async (_, { agentId, permissions }) => {
     return new Promise((resolve) => {
       const fs = require('fs');
       const path = require('path');
-      const downloadsDir = '/Users/ahmedissamramadan/Downloads';
+      const os = require('os');
+      const downloadsDir = path.join(os.homedir(), 'Downloads');
       const destBase = path.join(downloadsDir, 'Artelligence OS');
       
       const folders = {
@@ -1015,9 +1044,10 @@ ipcMain.on('show-native-notification', (event, { title, body }) => {
 });
 
 // --- UPWORK CATALOG AUTOMATOR IPC HANDLERS ---
-const UPWORK_HELPER_PATH = "/Users/ahmedissamramadan/.gemini/antigravity/scratch/artelligence_os/scripts/upwork_db_helper.ts";
-const UPWORK_UPLOADER_DIR = "/Users/ahmedissamramadan/.gemini/antigravity/scratch/upwork-catalog-automator";
-const BUN_ENHANCED_PATH = '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/Users/ahmedissamramadan/.bun/bin';
+const os = require('os');
+const UPWORK_HELPER_PATH = path.join(os.homedir(), ".gemini", "antigravity", "scratch", "artelligence_os", "scripts", "upwork_db_helper.ts");
+const UPWORK_UPLOADER_DIR = path.join(os.homedir(), ".gemini", "antigravity", "scratch", "upwork-catalog-automator");
+const BUN_ENHANCED_PATH = `/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:${path.join(os.homedir(), '.bun', 'bin')}`;
 
 ipcMain.handle('upwork:db', async (_, action, ...args) => {
   return new Promise((resolve) => {

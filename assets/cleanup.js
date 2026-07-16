@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const downloadsDir = '/Users/ahmedissamramadan/Downloads';
+const os = require('os');
+const downloadsDir = path.join(os.homedir(), 'Downloads');
 const destBase = path.join(downloadsDir, 'Artelligence OS');
 
 const folders = {
