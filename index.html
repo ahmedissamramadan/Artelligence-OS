@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artelligence OS - Empowering Single-Creator Empires</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #04060a;
+            --bg-surface: rgba(11, 15, 24, 0.75);
+            --border-hud: rgba(255, 255, 255, 0.05);
+            --border-hud-active: rgba(0, 242, 254, 0.4);
+            --accent-cyan: #00f2fe;
+            --accent-indigo: #4facfe;
+            --text-muted: #8a99ad;
+            --text-bright: #ffffff;
+            --neon-glow: 0 0 15px rgba(0, 242, 254, 0.25);
+            --neon-glow-hover: 0 0 25px rgba(0, 242, 254, 0.5);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-primary);
+            background-image: 
+                radial-gradient(circle at 5% 15%, rgba(79, 172, 254, 0.06) 0%, transparent 45%),
+                radial-gradient(circle at 95% 85%, rgba(0, 242, 254, 0.06) 0%, transparent 45%);
+        }
+
+        .glass-panel {
+            background: var(--bg-surface);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--border-hud);
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.45);
+        }
+
+        .hud-border-glow:hover {
+            border-color: var(--border-hud-active);
+            box-shadow: var(--neon-glow-hover);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scanlines {
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.3) 50%
+            );
+            background-size: 100% 4px;
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.05); }
+        }
+
+        .glow-dot {
+            animation: pulse-slow 3s infinite ease-in-out;
+        }
+        
+        /* Custom scrollbar for visual asset vault */
+        .custom-scroll::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(0, 242, 254, 0.2);
+            border-radius: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 242, 254, 0.4);
+        }
+    </style>
+</head>
+<body class="text-slate-200 selection:bg-cyan-500 selection:text-slate-950 min-h-screen overflow-x-hidden" onload="initVault()">
+
+    <!-- Top Glow Line -->
+    <div class="w-full h-1 bg-gradient-to-r from-cyan-400 via-indigo-500 to-cyan-400"></div>
+
+    <!-- Header Navigation -->
+    <header class="w-full max-w-6xl mx-auto px-6 py-6 flex items-center justify-between border-b border-white/5 bg-slate-950/20 backdrop-blur-md">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+            <img src="assets/brand/hero_logo.png" class="w-10 h-10 object-contain" alt="Artelligence OS Logo">
+            <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Artelligence OS</span>
+        </div>
+        <!-- Status Indicator -->
+        <div class="flex items-center gap-4 text-xs font-mono">
+            <span class="flex items-center gap-1.5 px-2.5 py-1 bg-cyan-500/10 text-cyan-400 rounded-full border border-cyan-500/20">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                SYSTEM: ACTIVE // DEPLOYED
+            </span>
+            <span class="hidden md:inline text-slate-500">v1.0.0 Stable Build</span>
+        </div>
+    </header>
+
+    <!-- Hero Manifesto Section -->
+    <section class="max-w-6xl mx-auto px-6 py-20 text-center flex flex-col items-center relative">
+        <div class="absolute inset-0 bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <!-- HERO BRAND LOGO EMBLEM -->
+        <div class="mb-10 relative group">
+            <div class="absolute -inset-2.5 bg-gradient-to-r from-cyan-400 to-indigo-500 rounded-full blur-[25px] opacity-40 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+            <img src="assets/brand/hero_logo.png" class="w-36 h-36 object-contain relative transition-transform duration-500 hover:scale-105" alt="Artelligence OS Hero Logo">
+        </div>
+
+        <div class="mb-6 px-4 py-1.5 bg-cyan-500/10 rounded-full border border-cyan-400/20 text-cyan-300 text-xs font-bold tracking-widest uppercase">
+            WE ARE BUILDING THE NEW WORLD
+        </div>
+
+        <h1 class="text-4xl md:text-8xl font-black tracking-tight text-white mb-6 leading-none max-w-5xl">
+            EMPOWERING INDIVIDUALS <br>
+            <span class="bg-gradient-to-r from-cyan-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent">WITH ABSOLUTE LEVERAGE</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-slate-400 max-w-3xl mb-12 leading-relaxed font-light">
+            Centralized software empires are obsolete. The future belongs to single-creator empires fueled by local cognitive orchestrators. Artelligence OS is designed to grant individuals the leadership, speed, and computational authority to dominate the technological landscape.
+        </p>
+
+        <!-- Product Hunt Embed Badge -->
+        <div class="mb-12 transition-transform hover:scale-105 duration-200">
+            <a href="https://www.producthunt.com/products/artelligence-os?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-artelligence-os" target="_blank" rel="noopener noreferrer"><img alt="Artelligence OS - Next-Gen Local AI Intelligence OS for macOS | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1198197&amp;theme=light&amp;t=1784221335579" style="width: 250px; height: 54px;" /></a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-24 z-10">
+            <a href="https://github.com/ahmedissamramadan/Artelligence-OS/releases/download/v1.0.0/Artelligence.OS-1.0.0-arm64.dmg" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-black rounded-xl shadow-lg shadow-cyan-500/20 transition-all hover:scale-102 active:scale-98">
+                Download for macOS (.DMG)
+            </a>
+            <a href="https://github.com/ahmedissamramadan/Artelligence-OS" class="px-8 py-4 bg-slate-950 hover:bg-slate-900 text-slate-300 font-semibold rounded-xl border border-white/10 transition-all">
+                Explore Source Code
+            </a>
+        </div>
+    </section>
+
+    <!-- Technological Capabilities & Architecture -->
+    <section class="max-w-6xl mx-auto px-6 pb-28">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-black mb-4">Our Technological Domain</h2>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm md:text-base font-light">
+                What we build independently using localized intelligence systems to optimize industries.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Cap 1 -->
+            <div class="glass-panel p-8 rounded-2xl hud-border-glow transition-all">
+                <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Workflow Automation</h3>
+                <p class="text-slate-400 text-sm leading-relaxed font-light">
+                    Designing autonomous backend integrations using n8n, Make.com, and WhatsApp Business API. We map complete business logics into self-executing automation pipelines.
+                </p>
+            </div>
+            <!-- Cap 2 -->
+            <div class="glass-panel p-8 rounded-2xl hud-border-glow transition-all">
+                <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Offline Context Brokers</h3>
+                <p class="text-slate-400 text-sm leading-relaxed font-light">
+                    Building secure, local semantic knowledge indices on SQLite, Bun, and TypeScript. Experience super-fast file reads and query executions without cloud dependencies.
+                </p>
+            </div>
+            <!-- Cap 3 -->
+            <div class="glass-panel p-8 rounded-2xl hud-border-glow transition-all">
+                <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Intelligent Data Sorting</h3>
+                <p class="text-slate-400 text-sm leading-relaxed font-light">
+                    Creating advanced filesystem sweep daemons that intelligently monitor folders and categorize massive arrays of assets (such as real estate portfolios or fit-out designs) into structural bins.
+                </p>
+            </div>
+            <!-- Cap 4 -->
+            <div class="glass-panel p-8 rounded-2xl hud-border-glow transition-all">
+                <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Creative Engine Generation</h3>
+                <p class="text-slate-400 text-sm leading-relaxed font-light">
+                    Developing local copywriting and campaign orchestrators for brands (such as modest fashion campaigns) that run without paid actors or music dependencies.
+                </p>
+            </div>
+            <!-- Cap 5 -->
+            <div class="glass-panel p-8 rounded-2xl hud-border-glow transition-all">
+                <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Sentiment Harvesters</h3>
+                <p class="text-slate-400 text-sm leading-relaxed font-light">
+                    Deploying automated scraper agents that scan social platforms, aggregate feedback trends, and generate clean reports to forecast product performance.
+                </p>
+            </div>
+            <!-- Cap 6 -->
+            <div class="glass-panel p-8 rounded-2xl hud-border-glow transition-all">
+                <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400 mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">High-Speed Packaging</h3>
+                <p class="text-slate-400 text-sm leading-relaxed font-light">
+                    Packaging robust Electron systems with native Mac tools and dynamic shell automation scripts, building fully operational DMG workspaces.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behance-Style Infinite Brand Showcase Grid -->
+    <section class="max-w-6xl mx-auto px-6 pb-28">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-black mb-4">Complete Brand Identity Showcase</h2>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm md:text-base font-light">
+                Explore the complete physical and digital visual ecosystem created for Artelligence OS, spanning multiple categories.
+            </p>
+            
+            <!-- Category Selector Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mt-8">
+                <button onclick="filterBrand('all')" id="btn-all" class="px-5 py-2 bg-cyan-500 text-slate-950 text-xs font-bold rounded-lg border border-cyan-400/20 transition-all">All Assets</button>
+                <button onclick="filterBrand('digital')" id="btn-digital" class="px-5 py-2 bg-slate-900 text-slate-300 text-xs font-bold rounded-lg border border-white/5 hover:border-cyan-400/20 transition-all">Digital Interfaces</button>
+                <button onclick="filterBrand('tech')" id="btn-tech" class="px-5 py-2 bg-slate-900 text-slate-300 text-xs font-bold rounded-lg border border-white/5 hover:border-cyan-400/20 transition-all">Technology &amp; Concepts</button>
+                <button onclick="filterBrand('lifestyle')" id="btn-lifestyle" class="px-5 py-2 bg-slate-900 text-slate-300 text-xs font-bold rounded-lg border border-white/5 hover:border-cyan-400/20 transition-all">Lifestyle &amp; Mobility</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="brand-grid">
+            <!-- Digital 1 -->
+            <div class="brand-card glass-panel rounded-2xl overflow-hidden hud-border-glow transition-all" data-category="digital">
+                <img src="assets/brand/dashboard.jpeg" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-500" alt="Digital Dashboard">
+                <div class="p-5">
+                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">DIGITAL // DASHBOARD</span>
+                    <h4 class="text-lg font-bold text-white mt-3">Cognitive User Dashboard</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Seamless integration of window tracking, SQLite activities, and workflow logs into a unified HUD panel.</p>
+                </div>
+            </div>
+            <!-- Digital 2 -->
+            <div class="brand-card glass-panel rounded-2xl overflow-hidden hud-border-glow transition-all" data-category="digital">
+                <img src="assets/brand/neural_link.jpeg" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-500" alt="Neural Link">
+                <div class="p-5">
+                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">DIGITAL // NEURAL LINK</span>
+                    <h4 class="text-lg font-bold text-white mt-3">Neural Connection Map</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Conceptual layout demonstrating how active agents connect with local file systems and background tasks.</p>
+                </div>
+            </div>
+            <!-- Digital 3 -->
+            <div class="brand-card glass-panel rounded-2xl overflow-hidden hud-border-glow transition-all" data-category="digital">
+                <img src="assets/brand/biometric.jpeg" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-500" alt="Biometric Security">
+                <div class="p-5">
+                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">DIGITAL // SECURITY</span>
+                    <h4 class="text-lg font-bold text-white mt-3">Biometric Encryption Shield</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Local authentication interface to lock, unlock, and secure local databases using Touch ID / Face ID.</p>
+                </div>
+            </div>
+
+            <!-- Tech 1 -->
+            <div class="brand-card glass-panel rounded-2xl overflow-hidden hud-border-glow transition-all" data-category="tech">
+                <img src="assets/brand/vr_headset.jpeg" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-500" alt="VR Headset">
+                <div class="p-5">
+                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">HARDWARE // VR WEARABLE</span>
+                    <h4 class="text-lg font-bold text-white mt-3">Artelligence Mixed Reality Wearable</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Next-gen conceptual MR visor displaying active agent telemetry and file-clean status in real space.</p>
+                </div>
+            </div>
+            <!-- Tech 2 -->
+            <div class="brand-card glass-panel rounded-2xl overflow-hidden hud-border-glow transition-all" data-category="tech">
+                <img src="assets/brand/workstation.jpeg" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-500" alt="Workstation">
+                <div class="p-5">
+                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">HARDWARE // WORKSTATION</span>
+                    <h4 class="text-lg font-bold text-white mt-3">Monolithic Compute Workspace</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">High-durability brushed metal and chrome computing node housing the local LLM reasoning systems.</p>
+                </div>
+            </div>
+            <!-- Tech 3 -->
+            <div class="brand-card glass-panel rounded-2xl overflow-hidden hud-border-glow transition-all" data-category="tech">
+                <img src="assets/brand/servers.jpeg" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-500" alt="Server Cluster">
+                <div class="p-5">
+                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">HARDWARE // SERVERS</span>
+                    <h4 class="text-lg font-bold text-white mt-3">High-Density Blade Clusters</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Custom local compute array designed to manage multi-agent memory loops with zero processing lag.</p>
+                </div>
+            </div>
+
+            <!-- Lifestyle 1 -->
+            <div class="brand-card glass-panel rounded-2xl overflow-hidden hud-border-glow transition-all" data-category="lifestyle">
+                <img src="assets/brand/ebike.jpeg" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-500" alt="Electric Bike">
+                <div class="p-5">
+                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">LIFESTYLE // TRANSPORT</span>
+                    <h4 class="text-lg font-bold text-white mt-3">Smart Connected Electric Bike</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Minimalist design featuring active path-planning and status updates synced with local devices.</p>
+                </div>
+            </div>
+            <!-- Lifestyle 2 -->
+            <div class="brand-card glass-panel rounded-2xl overflow-hidden hud-border-glow transition-all" data-category="lifestyle">
+                <img src="assets/brand/chair.jpeg" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-500" alt="Lounge Chair">
+                <div class="p-5">
+                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">LIFESTYLE // FURNITURE</span>
+                    <h4 class="text-lg font-bold text-white mt-3">Acoustic Spatial Lounge Chair</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Comfort seating featuring spatial audio feeds and auto-positioning tuned to active users.</p>
+                </div>
+            </div>
+            <!-- Lifestyle 3 -->
+            <div class="brand-card glass-panel rounded-2xl overflow-hidden hud-border-glow transition-all" data-category="lifestyle">
+                <img src="assets/brand/espresso.jpeg" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-500" alt="Espresso Machine">
+                <div class="p-5">
+                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">LIFESTYLE // HOSPITALITY</span>
+                    <h4 class="text-lg font-bold text-white mt-3">HUD Industrial Espresso Brewer</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Sleek office espresso maker integrating a digital HUD panel for temperature and pressure controls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE BRAND VAULT SECTION (SHOWS ALL 379 ASSETS DYNAMICALLY) -->
+    <section class="max-w-6xl mx-auto px-6 pb-28 border-t border-white/5 pt-20">
+        <div class="text-center mb-12">
+            <div class="mb-3 px-4 py-1 bg-cyan-500/10 rounded-full border border-cyan-400/20 text-cyan-300 text-[10px] font-mono tracking-widest uppercase inline-block">
+                DATABASE // BRANDS_AND_ASSETS_EXPLORER
+            </div>
+            <h2 class="text-3xl md:text-5xl font-black mb-4">The Virtual Brand &amp; Assets Vault</h2>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm font-light">
+                Browse through all 379 visual assets and corporate layout mockups designed for the Artelligence OS launch.
+            </p>
+        </div>
+
+        <div class="glass-panel p-6 rounded-3xl border border-white/10">
+            <!-- Search & Filter Controls -->
+            <div class="flex flex-col md:flex-row gap-4 mb-6">
+                <!-- Search Bar -->
+                <div class="relative flex-1">
+                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500 font-mono text-xs">
+                        SEARCH>
+                    </span>
+                    <input oninput="handleSearch(this.value)" type="text" placeholder="Search through all 379 brand assets..." class="w-full bg-black/40 border border-white/10 rounded-xl pl-16 pr-4 py-3 text-sm focus:outline-none focus:border-cyan-400 transition-colors placeholder:text-slate-600 font-mono text-cyan-400">
+                </div>
+                <!-- Dropdown selector for categories on small screen, and scroll row on desktop -->
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-mono text-slate-500 hidden md:inline">FILTER //</span>
+                    <select onchange="selectVaultCategory(this.value)" id="vault-select-mobile" class="md:hidden bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-cyan-400 text-slate-300 w-full font-mono">
+                        <option value="All">All Categories (379 Files)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Scrollable Category Tabs (Desktop) -->
+            <div class="hidden md:flex gap-2 overflow-x-auto pb-4 custom-scroll" id="vault-tabs-container">
+                <button onclick="selectVaultCategory('All')" id="tab-All" class="px-4 py-2 rounded-lg bg-cyan-500 text-slate-950 font-mono text-[10px] font-bold border border-cyan-400/20 active:scale-95 transition-all whitespace-nowrap">
+                    ALL CATEGORIES (379)
+                </button>
+            </div>
+
+            <!-- Vault Active Status Bar -->
+            <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 border-y border-white/5 py-3 mb-6 px-2">
+                <span>ACTIVE_QUERY: <span class="text-cyan-400" id="status-query">ALL</span></span>
+                <span>MATCHING_ENTRIES: <span class="text-cyan-400" id="status-count">0</span></span>
+            </div>
+
+            <!-- Grid of Assets (Lazy-loaded images) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="vault-grid">
+                <!-- Assets dynamically loaded here -->
+            </div>
+            
+            <!-- Loading Indicator -->
+            <div id="vault-loading" class="text-center py-12 text-slate-500 font-mono text-xs">
+                ⚡ Initializing local graphics index...
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator + AI Synergy Timeline -->
+    <section class="max-w-4xl mx-auto px-6 pb-28">
+        <div class="glass-panel p-8 md:p-12 rounded-3xl border border-white/10 relative">
+            <h3 class="text-2xl md:text-4xl font-black text-center text-white mb-12">The Power of AI + 1 (Single Creator Synergy)</h3>
+            
+            <div class="space-y-8 relative before:absolute before:inset-y-0 before:left-4 before:w-0.5 before:bg-white/10">
+                <!-- Step 1 -->
+                <div class="relative pr-6 pl-10">
+                    <span class="absolute top-1.5 left-2 w-4 h-4 rounded-full bg-cyan-400 border-4 border-slate-950"></span>
+                    <h4 class="text-lg font-bold text-white">Day 1: Architecture &amp; Telemetry</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Mapped the core infrastructure and created the local tracking engines using Node.js and AppleScript, bypassing heavy Python packages.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative pr-6 pl-10">
+                    <span class="absolute top-1.5 left-2 w-4 h-4 rounded-full bg-indigo-500 border-4 border-slate-950"></span>
+                    <h4 class="text-lg font-bold text-white">Day 2: Automation &amp; Daemon Sweeps</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Wrote local macOS launchd integrations to automatically organize downloaded folders into categorized project segments daily.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative pr-6 pl-10">
+                    <span class="absolute top-1.5 left-2 w-4 h-4 rounded-full bg-cyan-400 border-4 border-slate-950"></span>
+                    <h4 class="text-lg font-bold text-white">Day 3: Design System &amp; Brand Assets</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Generated a structured branding guideline and created 300+ physical mockups combining concrete, chrome, and slanted logo lines.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative pr-6 pl-10">
+                    <span class="absolute top-1.5 left-2 w-4 h-4 rounded-full bg-indigo-500 border-4 border-slate-950"></span>
+                    <h4 class="text-lg font-bold text-white">Day 4: Production Compilation &amp; Release</h4>
+                    <p class="text-xs text-slate-400 mt-2 leading-relaxed font-light">Compiled the final DMG build, deployed the gh-pages repository index, and integrated active WhatsApp communication pipelines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Diagnostics HUD Console -->
+    <section class="max-w-4xl mx-auto px-6 pb-20">
+        <div class="glass-panel rounded-2xl border border-white/10 overflow-hidden relative">
+            <!-- Console Header -->
+            <div class="bg-slate-900/80 px-6 py-3 flex items-center justify-between border-b border-white/5">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                </div>
+                <span class="text-xs font-mono text-slate-500">ART_OS_DIAGNOSTICS_PANEL // LIVE</span>
+            </div>
+            <!-- Console Body -->
+            <div class="p-6 font-mono text-xs text-cyan-400 min-h-[220px] bg-black/40 scanlines select-none" id="console-screen">
+                <p class="text-slate-500">// Press diagnostic buttons below to trigger agent simulations and check active memory tables...</p>
+            </div>
+            <!-- Console Buttons -->
+            <div class="bg-slate-900/60 p-4 border-t border-white/5 grid grid-cols-3 gap-2">
+                <button onclick="runDiag('memory')" class="py-2.5 bg-slate-950 hover:bg-slate-900 text-slate-300 rounded border border-white/10 active:scale-98 transition-all font-semibold text-center">
+                    🩺 Check Memory
+                </button>
+                <button onclick="runDiag('sqlite')" class="py-2.5 bg-slate-950 hover:bg-slate-900 text-slate-300 rounded border border-white/10 active:scale-98 transition-all font-semibold text-center">
+                    💾 Check Database
+                </button>
+                <button onclick="runDiag('sweep')" class="py-2.5 bg-slate-950 hover:bg-slate-900 text-slate-300 rounded border border-white/10 active:scale-98 transition-all font-semibold text-center">
+                    🧹 Simulate Clean
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect / Contact Form Section -->
+    <section class="max-w-4xl mx-auto px-6 pb-32">
+        <div class="glass-panel p-8 md:p-12 rounded-3xl border border-white/10 relative">
+            <div class="absolute -top-6 left-8 px-4 py-2 bg-indigo-600 rounded-xl text-white text-xs font-bold shadow-lg">
+                🤝 Secure Connection / Handshake
+            </div>
+            
+            <h3 class="text-2xl md:text-3xl font-black text-white mb-2 mt-2">Let's Build Something Breathtaking Together!</h3>
+            <p class="text-slate-400 text-sm mb-8 leading-relaxed font-light">
+                Are you a founder, startup owner, creator, freelancer, or professional builder? I love partnering with like-minded creators to build elegant digital products, automate complex pipelines, and architect high-performance local AI networks. Let's work together to maximize the value of your efforts, save your time, and help you establish technological authority in your domain!
+            </p>
+
+            <!-- Detailed Contact Info Panel -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+                <!-- Row 1 -->
+                <div class="bg-black/30 border border-white/5 rounded-xl p-4 flex flex-col justify-between">
+                    <span class="text-[10px] font-mono text-cyan-400">WORK EMAIL</span>
+                    <span class="text-xs font-bold text-white mt-1 break-all select-all">ahmedissam.work@gmail.com</span>
+                    <button onclick="copyInfo('ahmedissam.work@gmail.com', this)" class="mt-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-[10px] text-slate-400 rounded border border-white/5 active:scale-98 transition-all font-semibold">Copy Address</button>
+                </div>
+                <div class="bg-black/30 border border-white/5 rounded-xl p-4 flex flex-col justify-between">
+                    <span class="text-[10px] font-mono text-cyan-400">PERSONAL EMAIL</span>
+                    <span class="text-xs font-bold text-white mt-1 break-all select-all">ahmedissam.personal@gmail.com</span>
+                    <button onclick="copyInfo('ahmedissam.personal@gmail.com', this)" class="mt-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-[10px] text-slate-400 rounded border border-white/5 active:scale-98 transition-all font-semibold">Copy Address</button>
+                </div>
+                <div class="bg-black/30 border border-white/5 rounded-xl p-4 flex flex-col justify-between">
+                    <span class="text-[10px] font-mono text-cyan-400">PRIMARY WHATSAPP</span>
+                    <span class="text-xs font-bold text-white mt-1">+2 0150 165 60 10</span>
+                    <a href="https://wa.me/201501656010" target="_blank" class="mt-3 py-1.5 bg-gradient-to-r from-cyan-500 to-indigo-500 text-slate-950 text-[10px] font-bold rounded active:scale-98 transition-all text-center block">Chat Now</a>
+                </div>
+                <!-- Row 2 -->
+                <div class="bg-black/30 border border-white/5 rounded-xl p-4 flex flex-col justify-between">
+                    <span class="text-[10px] font-mono text-cyan-400">SECONDARY PHONE</span>
+                    <span class="text-xs font-bold text-white mt-1">+2 0100 854 79 34</span>
+                    <a href="https://wa.me/201008547934" target="_blank" class="mt-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-[10px] text-slate-400 rounded border border-white/5 active:scale-98 transition-all text-center block">Send Message</a>
+                </div>
+                <div class="bg-black/30 border border-white/5 rounded-xl p-4 flex flex-col justify-between">
+                    <span class="text-[10px] font-mono text-cyan-400">LINKTREE PROFILE</span>
+                    <span class="text-xs font-bold text-white mt-1">linktr.ee/ahmedissamramadan</span>
+                    <a href="https://linktr.ee/ahmedissamramadan" target="_blank" class="mt-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-[10px] text-slate-300 rounded border border-white/5 active:scale-98 transition-all text-center block font-semibold">Visit Links</a>
+                </div>
+                <div class="bg-black/30 border border-white/5 rounded-xl p-4 flex flex-col justify-between">
+                    <span class="text-[10px] font-mono text-cyan-400">LINKIE BIO</span>
+                    <span class="text-xs font-bold text-white mt-1">linkie.bio/ahmedissam.personal</span>
+                    <a href="https://linkie.bio/ahmedissam.personal" target="_blank" class="mt-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-[10px] text-slate-300 rounded border border-white/5 active:scale-98 transition-all text-center block font-semibold">Visit Links</a>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-slate-400 font-mono mb-1.5">NAME // WHO ARE YOU?</label>
+                    <input type="text" id="contact-name" required placeholder="Your Name" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 font-mono mb-1.5">EMAIL // HOW CAN I REACH YOU?</label>
+                    <input type="email" id="contact-email" required placeholder="you@domain.com" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-400 font-mono mb-1.5">MESSAGE // WHAT ARE WE BUILDING?</label>
+                    <textarea id="contact-message" required rows="4" placeholder="Describe your project, ideas, or how we can collaborate..." class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-400 transition-colors resize-none"></textarea>
+                </div>
+
+                <!-- Submit Area -->
+                <div class="pt-4 flex gap-3">
+                    <button type="submit" class="flex-1 py-3 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-black rounded-xl transition-all shadow-lg shadow-cyan-500/10 text-center active:scale-98">
+                        ⚡ Start Conversation on WhatsApp
+                    </button>
+                </div>
+            </form>
+
+            <!-- Success Overlay Simulation -->
+            <div id="success-overlay" class="absolute inset-0 bg-slate-950/95 rounded-3xl flex flex-col items-center justify-center p-8 hidden text-center">
+                <div class="w-16 h-16 bg-cyan-500/10 rounded-full border border-cyan-400/20 flex items-center justify-center text-cyan-400 mb-6 glow-dot">
+                    <svg class="w-8 h-8 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2">Data Packet Generated!</h4>
+                <p class="text-sm text-slate-400 mb-6">
+                    Redirecting to secure chat channel... Let's connect!
+                </p>
+                <button onclick="resetForm()" class="px-6 py-2 bg-slate-900 hover:bg-slate-800 text-xs text-slate-300 rounded-lg border border-white/10">
+                    Send another message
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX COMPONENT FOR FULL RESOLUTION PREVIEW -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden items-center justify-center p-4">
+        <!-- Close button top-right -->
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/50 hover:text-white hover:scale-110 active:scale-95 transition-all text-3xl font-bold">&times;</button>
+        <!-- Content Container -->
+        <div class="max-w-4xl w-full flex flex-col items-center select-none">
+            <img id="lightbox-img" src="" class="max-h-[75vh] object-contain rounded-xl border border-white/10 shadow-2xl" alt="Preview Image">
+            <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between w-full gap-4 px-2">
+                <div>
+                    <span id="lightbox-tag" class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20 uppercase">CATEGORY</span>
+                    <h5 id="lightbox-title" class="text-lg font-bold text-white mt-1.5">Asset Name</h5>
+                </div>
+                <a id="lightbox-dl" href="" download class="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-indigo-500 text-slate-950 font-bold rounded-lg text-xs hover:from-cyan-400 hover:to-indigo-400 active:scale-95 transition-all text-center">
+                    📥 Download Original Image
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full text-center py-8 text-xs text-slate-600 border-t border-white/5 bg-slate-950/30 backdrop-blur">
+        <p class="font-mono">Artelligence OS // Built Locally on macOS M1/M2/M3 // Zero-Budget Engineering</p>
+    </footer>
+
+    <!-- Diagnostic and Form scripts -->
+    <script>
+        const consoleScreen = document.getElementById('console-screen');
+
+        function runDiag(type) {
+            consoleScreen.innerHTML = '<span class="text-slate-500">> Initiating system telemetry analysis...</span>';
+            setTimeout(() => {
+                if (type === 'memory') {
+                    consoleScreen.innerHTML = `
+<span class="text-slate-500">> active-process: check_memory</span><br>
+<span class="text-slate-400">[info]</span> Memory pool initialized: M-series Unified Memory Architecture<br>
+<span class="text-slate-400">[info]</span> Node.js active buffer footprint: 24.3 MB<br>
+<span class="text-slate-400">[info]</span> UI renderer process leak scan: <span class="text-emerald-400">0 leaks detected (CLEAN)</span><br>
+<span class="text-emerald-400">>> DIAGNOSTICS COMPLETED SUCCESSFULLY. STATUS: OPTIMAL</span>
+                    `;
+                } else if (type === 'sqlite') {
+                    consoleScreen.innerHTML = `
+<span class="text-slate-500">> active-process: test_sqlite_bridge</span><br>
+<span class="text-slate-400">[cmd]</span> /usr/bin/sqlite3 ~/.artelligence_os/activity.db "SELECT 1;"<br>
+<span class="text-slate-400">[info]</span> Connection established via system commands. Output: [{"1":1}]<br>
+<span class="text-slate-400">[info]</span> Integrity check: ok<br>
+<span class="text-emerald-400">>> SQLITE ENGINE HEALTHY. CONNECTION STABLE.</span>
+                    `;
+                } else if (type === 'sweep') {
+                    consoleScreen.innerHTML = `
+<span class="text-slate-500">> active-process: simulate_cleanup_daemon</span><br>
+<span class="text-slate-400">[info]</span> Scan folder: ~/Downloads<br>
+<span class="text-slate-400">[info]</span> Detected: 0 items matched keywords ('solara', 'tohamy', 'upwork')<br>
+<span class="text-slate-400">[info]</span> launchd calendar triggers verified: 3:00 AM Daily<br>
+<span class="text-emerald-400">>> SWEEP SIMULATION COMPLETED. NO ACTION REQUIRED.</span>
+                    `;
+                }
+            }, 500);
+        }
+
+        function filterBrand(category) {
+            const cards = document.querySelectorAll('.brand-card');
+            const btns = ["btn-all", "btn-digital", "btn-tech", "btn-lifestyle"];
+            
+            // Update button styles
+            btns.forEach(btnId => {
+                const el = document.getElementById(btnId);
+                if (btnId === `btn-${category}`) {
+                    el.className = "px-5 py-2 bg-cyan-500 text-slate-950 text-xs font-bold rounded-lg border border-cyan-400/20 transition-all";
+                } else {
+                    el.className = "px-5 py-2 bg-slate-900 text-slate-300 text-xs font-bold rounded-lg border border-white/5 hover:border-cyan-400/20 transition-all";
+                }
+            });
+
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function copyInfo(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = "Copied!";
+                button.className = "mt-3 py-1.5 bg-emerald-500 text-slate-950 text-[10px] font-bold rounded active:scale-98 transition-all w-full text-center";
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.className = "mt-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-[10px] text-slate-400 rounded border border-white/5 active:scale-98 transition-all w-full text-center";
+                }, 2000);
+            });
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const msg = document.getElementById('contact-message').value;
+
+            // Generate prefilled WhatsApp url
+            const phone = "201501656010";
+            const text = `🌌 *New Message from Artelligence OS*\n\n*Name:* ${name}\n*Email:* ${email}\n\n*Message:*\n${msg}`;
+            const encodedText = encodeURIComponent(text);
+            const waUrl = `https://wa.me/${phone}?text=${encodedText}`;
+
+            document.getElementById('success-overlay').classList.remove('hidden');
+            
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 1500);
+        }
+
+        function resetForm() {
+            document.getElementById('success-overlay').classList.add('hidden');
+            document.getElementById('contact-form').reset();
+        }
+
+        // VIRTUAL VAULT SYSTEM LOGIC
+        let vaultAssets = {};
+        let currentVaultCategory = 'All';
+        let currentVaultSearch = '';
+
+        async function initVault() {
+            const loadingEl = document.getElementById('vault-loading');
+            try {
+                const res = await fetch('assets/visual_side_metadata.json');
+                if (!res.ok) throw new Error("Status " + res.status);
+                vaultAssets = await res.json();
+                
+                loadingEl.style.display = 'none';
+                populateVaultControls();
+                renderVault();
+            } catch(e) {
+                console.error("Failed to load visual_side_metadata:", e);
+                loadingEl.innerHTML = '❌ Failed to initialize asset index database. Verify assets exist locally.';
+                loadingEl.className = 'text-center py-12 text-rose-500 font-mono text-xs';
+            }
+        }
+
+        function populateVaultControls() {
+            const selectMobile = document.getElementById('vault-select-mobile');
+            const tabsContainer = document.getElementById('vault-tabs-container');
+            
+            // Collect counts
+            let total = 0;
+            const keys = Object.keys(vaultAssets).sort();
+            
+            keys.forEach(key => {
+                const count = vaultAssets[key].length;
+                total += count;
+                
+                // Add mobile option
+                const opt = document.createElement('option');
+                opt.value = key;
+                opt.textContent = `${key} (${count} files)`;
+                selectMobile.appendChild(opt);
+                
+                // Add desktop tab button
+                const btn = document.createElement('button');
+                btn.id = `tab-${key}`;
+                btn.onclick = () => selectVaultCategory(key);
+                btn.className = "px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 font-mono text-[10px] border border-white/5 active:scale-95 transition-all whitespace-nowrap";
+                btn.textContent = `${key.toUpperCase()} (${count})`;
+                tabsContainer.appendChild(btn);
+            });
+            
+            // Set counts on desktop first button
+            document.getElementById('tab-All').textContent = `ALL CATEGORIES (${total})`;
+            document.getElementById('vault-select-mobile').options[0].textContent = `All Categories (${total} files)`;
+        }
+
+        function selectVaultCategory(category) {
+            currentVaultCategory = category;
+            
+            // Sync dropdown
+            document.getElementById('vault-select-mobile').value = category;
+            
+            // Sync desktop active state
+            const allBtns = document.getElementById('vault-tabs-container').querySelectorAll('button');
+            allBtns.forEach(btn => {
+                if (btn.id === `tab-${category}`) {
+                    btn.className = "px-4 py-2 rounded-lg bg-cyan-500 text-slate-950 font-mono text-[10px] font-bold border border-cyan-400/20 active:scale-95 transition-all whitespace-nowrap";
+                } else {
+                    btn.className = "px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 font-mono text-[10px] border border-white/5 active:scale-95 transition-all whitespace-nowrap";
+                }
+            });
+            
+            renderVault();
+        }
+
+        function handleSearch(val) {
+            currentVaultSearch = val.toLowerCase().trim();
+            renderVault();
+        }
+
+        function renderVault() {
+            const grid = document.getElementById('vault-grid');
+            grid.innerHTML = '';
+            
+            document.getElementById('status-query').textContent = (currentVaultSearch ? `"${currentVaultSearch}"` : 'NONE') + ` IN [${currentVaultCategory.toUpperCase()}]`;
+            
+            let matchedItems = [];
+            
+            // Filter logic
+            for (const category in vaultAssets) {
+                if (currentVaultCategory !== 'All' && category !== currentVaultCategory) continue;
+                
+                vaultAssets[category].forEach(asset => {
+                    const matchesSearch = !currentVaultSearch || 
+                                          asset.name.toLowerCase().includes(currentVaultSearch) || 
+                                          category.toLowerCase().includes(currentVaultSearch);
+                    if (matchesSearch) {
+                        matchedItems.push({
+                            ...asset,
+                            category: category
+                        });
+                    }
+                });
+            }
+            
+            document.getElementById('status-count').textContent = matchedItems.length;
+            
+            if (matchedItems.length === 0) {
+                grid.innerHTML = '<div class="col-span-full py-16 text-center text-slate-600 font-mono text-xs">// No matching assets found in search index.</div>';
+                return;
+            }
+            
+            // Render items
+            matchedItems.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-black/40 border border-white/5 rounded-xl overflow-hidden hover:border-cyan-500/30 transition-all cursor-pointer group";
+                card.onclick = () => openLightbox(item.path, item.name, item.category);
+                
+                card.innerHTML = `
+                    <div class="w-full h-32 bg-slate-950 overflow-hidden relative">
+                        <img src="${item.path}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="${item.name}">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
+                            <span class="text-[9px] font-mono text-cyan-400">PREVIEW></span>
+                        </div>
+                    </div>
+                    <div class="p-3 border-t border-white/5">
+                        <span class="text-[8px] font-mono text-slate-500 uppercase block truncate">${item.category}</span>
+                        <h5 class="text-xs font-bold text-white mt-1 truncate group-hover:text-cyan-400 transition-colors">${item.name}</h5>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Lightbox Functions
+        function openLightbox(path, name, category) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const tag = document.getElementById('lightbox-tag');
+            const dl = document.getElementById('lightbox-dl');
+            
+            img.src = path;
+            title.textContent = name;
+            tag.textContent = category;
+            dl.href = path;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+        
+        // Close modal on background click
+        document.getElementById('lightbox-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    </script>
+
+</body>
+</html>
